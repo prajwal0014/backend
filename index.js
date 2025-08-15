@@ -16,7 +16,7 @@ let app = express()
 
 app.use(express.json())
 app.use(cookieParser())
-const cors = require('cors');
+
 app.use(cors({
   origin: 'https://kridhatrinkets.com',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
