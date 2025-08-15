@@ -16,10 +16,12 @@ let app = express()
 
 app.use(express.json())
 app.use(cookieParser())
+const cors = require('cors');
 app.use(cors({
- origin:["http://localhost:5173" , "http://localhost:5174"],
- credentials:true
-}))
+  origin: 'https://kridhatrinkets.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 
 app.use("/api/auth",authRoutes)
 app.use("/api/user",userRoutes)
