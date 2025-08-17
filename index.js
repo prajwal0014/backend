@@ -19,6 +19,7 @@ app.use(cookieParser())
 
 app.use(cors({
   origin: 'https://www.kridhatrinket.com',
+  'https://kridhatrinket.com'
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
