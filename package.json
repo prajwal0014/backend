@@ -6,7 +6,7 @@
   "author": "",
   "type": "module",
   "main": "index.js",
-  "proxy": "https://backend1-g1j2onen2ea.onrender.com",
+  "proxy": "https://backend-1-g1z3.onrender.com",
   "scripts": {
     "dev": " nodemon index.js "
   },
