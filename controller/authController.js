@@ -22,7 +22,7 @@ export const registration = async (req,res) => {
     const user = await User.create({name,email,password:hashPassword})
     let token = await genToken(user._id)
     res.cookie("token",token,{
-        httpsOnly:true,
+        httpOnly:true,
         secure:true,
         sameSite: "none",
         maxAge: 7 * 24 * 60 * 60 * 1000
@@ -49,7 +49,7 @@ export const login = async (req,res) => {
         }
         let token = await genToken(user._id)
         res.cookie("token",token,{
-        httpsOnly:true,
+        httpOnly:true,
         secure:true,
         sameSite: "none",
         maxAge: 7 * 24 * 60 * 60 * 1000
@@ -65,7 +65,11 @@ export const login = async (req,res) => {
 }
 export const logOut = async (req,res) => {
 try {
-    res.clearCookie("token")
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      path: "/login",
     return res.status(200).json({message:"logOut successful"})
 } catch (error) {
     console.log("logOut error")
@@ -87,7 +91,7 @@ export const googleLogin = async (req,res) => {
        
         let token = await genToken(user._id)
         res.cookie("token",token,{
-        httpsOnly:true,
+        httpOnly:true,
         secure:true,
         sameSite: "none",
         maxAge: 7 * 24 * 60 * 60 * 1000
@@ -108,7 +112,7 @@ export const adminLogin = async (req,res) => {
         if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
         let token = await genToken1(email)
         res.cookie("token",token,{
-        httpsOnly:true,
+        httpOnly:true,
         secure:true,
         sameSite: "none",
         maxAge: 1 * 24 * 60 * 60 * 1000
