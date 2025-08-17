@@ -69,7 +69,7 @@ try {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      path: "/login",
+      path: "/login",});
     return res.status(200).json({message:"logOut successful"})
 } catch (error) {
     console.log("logOut error")
