@@ -52,6 +52,7 @@ export const login = async (req,res) => {
         httpOnly:true,
         secure:true,
         sameSite: "None",
+          path: "/",
         maxAge: 7 * 24 * 60 * 60 * 1000
     })
     return res.status(201).json(user)
@@ -69,7 +70,7 @@ try {
       httpOnly: true,
       secure: true,
       sameSite: "None",
-      path: "/login",});
+      path: "/",});
     return res.status(200).json({message:"logOut successful"})
 } catch (error) {
     console.log("logOut error")
