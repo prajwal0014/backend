@@ -3,7 +3,7 @@ import User from "../model/userModel.js";
 
 export const addToCart = async (req,res) => {
     try {
-    const {itemId, size } = req.body;
+    const {itemId } = req.body;
 
     const userData = await User.findById(req.userId);
 
@@ -16,14 +16,14 @@ export const addToCart = async (req,res) => {
     let cartData = userData.cartData || {};
 
     if (cartData[itemId]) {
-      if (cartData[itemId][size]) {
-        cartData[itemId][size] += 1;
+      if (cartData[itemId]) {
+        cartData[itemId] += 1;
       } else {
-        cartData[itemId][size] = 1;
+        cartData[itemId] = 1;
       }
     } else {
       cartData[itemId] = {};
-      cartData[itemId][size] = 1;
+      cartData[itemId] = 1;
     }
 
     await User.findByIdAndUpdate(req.userId, { cartData });
@@ -41,11 +41,11 @@ export const addToCart = async (req,res) => {
 
 export const UpdateCart = async (req,res) => {
      try {
-         const {itemId , size , quantity } = req.body
+         const {itemId , quantity } = req.body
          const userData = await User.findById(req.userId)
          let cartData = await userData.cartData;
 
-         cartData[itemId][size] = quantity
+         cartData[itemId] = quantity
 
           await User.findByIdAndUpdate(req.userId,{cartData})
 
