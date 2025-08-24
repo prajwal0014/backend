@@ -9,18 +9,6 @@ const productSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    image2:{
-        type:String,
-        required:true
-    },
-    image3:{
-        type:String,
-        required:true
-    },
-    image4:{
-        type:String,
-        required:true
-    },
     description:{
         type:String,
         required:true
@@ -35,10 +23,6 @@ const productSchema = new mongoose.Schema({
     },
     subCategory:{
         type:String,
-        required:true
-    },
-    sizes:{
-        type:Array,
         required:true
     },
     date:{
