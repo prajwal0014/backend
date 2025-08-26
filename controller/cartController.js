@@ -23,7 +23,10 @@ export const addToCart = async (req,res) => {
       }
     } 
 
-    await User.findByIdAndUpdate(req.userId, { cartData });
+    await User.findByIdAndUpdate(req.userId,
+      { $set: { cartData } },
+      { new: true }
+    );
 
     return res.status(201).json({ message: "Added to cart" });
   } catch (error) {
@@ -44,9 +47,13 @@ export const UpdateCart = async (req,res) => {
 
          cartData[itemId] = quantity
 
-          await User.findByIdAndUpdate(req.userId,{cartData})
+          await User.findByIdAndUpdate(req.userId,
+      { $set: { cartData } },
+      { new: true }
+    );
 
-    return res.status(201).json({message:"cart updated"})
+    return res.status(201).json({ message: "cart updated", cartData: updatedUser.cartData });
+
 
 
 
