@@ -21,10 +21,7 @@ export const addToCart = async (req,res) => {
       } else {
         cartData[itemId] = 1;
       }
-    } else {
-      cartData[itemId] = {};
-      cartData[itemId] = 1;
-    }
+    } 
 
     await User.findByIdAndUpdate(req.userId, { cartData });
 
