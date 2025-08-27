@@ -8,7 +8,7 @@ const orderRoutes = express.Router()
 //for User
 orderRoutes.post("/placeorder",isAuth,placeOrder)
 orderRoutes.post("/razorpay",isAuth,placeOrderRazorpay)
-orderRoutes.post("/userorder",isAuth,userOrders)
+orderRoutes.post("/userorders",isAuth,userOrders)
 orderRoutes.post("/verifyrazorpay",isAuth,verifyRazorpay)
  
 //for Admin
